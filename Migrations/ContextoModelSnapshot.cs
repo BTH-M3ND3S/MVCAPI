@@ -54,6 +54,11 @@ namespace ProjetoApi.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("AnimalNome");
 
+                    b.Property<string>("AnimalObservacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AnimalObservacao");
+
                     b.Property<string>("AnimalRaca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")

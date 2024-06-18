@@ -1,55 +1,92 @@
 ﻿@model ProjetoApi.Models.Animais
 
 @{
-    ViewData["Title"] = "Excluir Animal";
+    ViewData["Title"] = "Delete";
 }
 
 <h1 class="page-title">@ViewData["Title"]</h1>
 
-<h3 class="page-subtitle">Você tem certeza que quer excluir esse animal?</h3>
-
-<div class="details-container">
-    <dl class="row">
-        <dt class="col-sm-3">Nome do Animal</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalNome)</dd>
-
-        <dt class="col-sm-3">Raça</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalRaca)</dd>
-
-        <dt class="col-sm-3">Tipo</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalTipo)</dd>
-
-        <dt class="col-sm-3">Cor</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalCor)</dd>
-
-        <dt class="col-sm-3">Sexo</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalSexo)</dd>
-
-        <dt class="col-sm-3">Foto (URL)</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalFoto)</dd>
-
-        <dt class="col-sm-3">Data de Desaparecimento</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalDtDesaparecimento)</dd>
-
-        <dt class="col-sm-3">Data de Encontro</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalDtEncontro)</dd>
-
-        <dt class="col-sm-3">Status</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.AnimalStatus)</dd>
-
-        <dt class="col-sm-3">Usuário</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Usuario.UsuarioNome)</dd>
+<h3 class="confirm-message">Are you sure you want to delete this?</h3>
+<div class="confirmation-container">
+    <h4 class="form-title">Animais</h4>
+    <hr class="form-divider" />
+    <dl class="row detail-list">
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalNome)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalNome)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalRaca)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalRaca)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalTipo)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalTipo)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalCor)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalCor)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalSexo)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalSexo)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalObservacao)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalObservacao)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalFoto)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalFoto)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalDtDesaparecimento)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalDtDesaparecimento)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalDtEncontro)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalDtEncontro)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.AnimalStatus)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.AnimalStatus)
+        </dd>
+        <dt class="col-sm-2 detail-label">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class="col-sm-10 detail-value">
+            @Html.DisplayFor(model => model.Usuario.Id)
+        </dd>
     </dl>
+
     <div class="text-center">
-        <form asp-action="Delete" class="form-group">
+        <form asp-action="Delete" class="delete-form">
             <input type="hidden" asp-for="Id" />
-            <button type="submit" class="btn btn-danger">Deletar</button>
-            <a asp-action="Index" class="btn btn-secondary">Voltar para a lista</a>
+            <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+            <a asp-action="Index" class="btn btn-secondary btn-back">Back to List</a>
         </form>
     </div>
 </div>
-
-
 
 @section Scripts {
     @{
@@ -62,16 +99,17 @@
         text-align: center;
         margin-bottom: 20px;
         font-size: 2em;
-        color: #dc3545;
+        color: #333;
     }
 
-    .page-subtitle {
+    .confirm-message {
         text-align: center;
-        margin-bottom: 30px;
-        font-size: 1.5em;
-        color: #555;
+        font-size: 1.25em;
+        margin-bottom: 20px;
+        color: #d9534f;
     }
-    .details-container {
+
+    .confirmation-container {
         background-color: #f9f9f9;
         padding: 20px;
         border-radius: 10px;
@@ -80,26 +118,41 @@
         width: 60%;
     }
 
-    .row dt {
+    .form-title {
+        text-align: center;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .form-divider {
+        margin-bottom: 20px;
+    }
+
+    .detail-list dt, .detail-list dd {
+        margin-bottom: 10px;
+    }
+
+    .detail-label {
         font-weight: bold;
+        color: #555;
+    }
+
+    .detail-value {
         color: #333;
     }
 
-    .row dd {
-        margin-left: 0;
+    .text-center {
+        text-align: center;
+        margin-top: 20px;
     }
 
-    .btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin: 5px;
+    .delete-form .btn {
+        margin-top: 10px;
+        width: 100%;
     }
 
     .btn-danger {
-        width:100%;
         background-color: #dc3545;
         color: #fff;
     }
@@ -109,7 +162,6 @@
         }
 
     .btn-secondary {
-        width:100%;
         background-color: #6c757d;
         color: #fff;
     }
@@ -118,8 +170,11 @@
             background-color: #5a6268;
         }
 
-    .text-center {
-        text-align: center;
-        margin-top: 20px;
+    .btn-delete {
+        margin-right: 10px;
+    }
+
+    .btn-back {
+        margin-left: 10px;
     }
 </style>

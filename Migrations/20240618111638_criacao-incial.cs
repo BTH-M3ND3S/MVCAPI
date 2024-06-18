@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjetoApi.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoInicial : Migration
+    public partial class criacaoincial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,6 +38,7 @@ namespace ProjetoApi.Migrations
                     AnimalTipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnimalCor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnimalSexo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AnimalObservacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnimalFoto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnimalDtDesaparecimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AnimalDtEncontro = table.Column<DateTime>(type: "datetime2", nullable: true),

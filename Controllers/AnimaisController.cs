@@ -48,7 +48,7 @@ namespace ProjetoApi.Controllers
         // GET: Animais/Create
         public IActionResult Create()
         {
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace ProjetoApi.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AnimalNome,AnimalRaca,AnimalTipo,AnimalCor,AnimalSexo,AnimalFoto,AnimalDtDesaparecimento,AnimalDtEncontro,AnimalStatus,UsuarioId")] Animais animais)
+        public async Task<IActionResult> Create([Bind("Id,AnimalNome,AnimalRaca,AnimalTipo,AnimalCor,AnimalSexo,AnimalObservacao,AnimalFoto,AnimalDtDesaparecimento,AnimalDtEncontro,AnimalStatus,UsuarioId")] Animais animais)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace ProjetoApi.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", animais.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Id", animais.UsuarioId);
             return View(animais);
         }
 
@@ -82,7 +82,7 @@ namespace ProjetoApi.Controllers
             {
                 return NotFound();
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", animais.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Id", animais.UsuarioId);
             return View(animais);
         }
 
@@ -91,7 +91,7 @@ namespace ProjetoApi.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AnimalNome,AnimalRaca,AnimalTipo,AnimalCor,AnimalSexo,AnimalFoto,AnimalDtDesaparecimento,AnimalDtEncontro,AnimalStatus,UsuarioId")] Animais animais)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AnimalNome,AnimalRaca,AnimalTipo,AnimalCor,AnimalSexo,AnimalObservacao,AnimalFoto,AnimalDtDesaparecimento,AnimalDtEncontro,AnimalStatus,UsuarioId")] Animais animais)
         {
             if (id != animais.Id)
             {
@@ -118,7 +118,7 @@ namespace ProjetoApi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "UsuarioNome", animais.UsuarioId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuario, "Id", "Id", animais.UsuarioId);
             return View(animais);
         }
 

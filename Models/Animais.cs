@@ -30,6 +30,10 @@ namespace ProjetoApi.Models
         [Display(Name = "Sexo do Animal")]
         public string AnimalSexo { get; set; } = string.Empty;
 
+        [Column("AnimalObservacao")]
+        [Display(Name = "Observacao do Animal")]
+        public string AnimalObservacao { get; set; } = string.Empty;
+
         [Column("AnimalFoto")]
         [Display(Name = "Link da foto do animal")]
         public string AnimalFoto{ get; set; } = string.Empty;

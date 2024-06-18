@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ProjetoApi.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240605110056_Criacao-Inicial")]
-    partial class CriacaoInicial
+    [Migration("20240618111638_criacao-incial")]
+    partial class criacaoincial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,11 @@ namespace ProjetoApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("AnimalNome");
+
+                    b.Property<string>("AnimalObservacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AnimalObservacao");
 
                     b.Property<string>("AnimalRaca")
                         .IsRequired()
